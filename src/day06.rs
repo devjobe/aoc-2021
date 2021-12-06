@@ -1,38 +1,26 @@
-use std::collections::HashMap;
-
-fn spawned(days: i64, memo: &mut HashMap<i64, i64>) -> i64 {
-    if days <= 0 {
-        return 0;
-    }
-
-    if let Some(&n) = memo.get(&days) {
-        return n;
-    }
-
-    let k = (days+6) / 7;
-    let mut sum = k;
-    for n in 0..k {
-        sum += spawned(days-n*7-9, memo);
-    }
-    memo.insert(days, sum);
-    sum
-}
-
 pub fn run() {
     let input = include_str!("../inputs/day06.txt");
     let fishes: Vec<_> = input.split(',').map(str::parse::<i64>).collect::<Result<Vec<i64>, _>>().expect("Numbers");
 
-    let mut memo = HashMap::new();
+    let mut frequencies = vec![0;9];
 
-    {
-        let total_days = 80;
-        let sum : i64 = fishes.iter().map(|&t| { spawned(total_days-t, &mut memo)+1 }).sum();
-        println!("Day 06 part 1: {sum}");
+    for n in fishes {
+        assert!((0..7).contains(&n));
+        *frequencies.get_mut(n as usize).expect("Number in range.") += 1i64;
     }
 
-    {
-        let total_days = 256;
-        let sum : i64= fishes.iter().map(|&t| { spawned(total_days-t, &mut memo)+1 }).sum();
-        println!("Day 06 part 2: {sum}");
+    let g = frequencies.len();
+    for n in 0..80 {
+        frequencies[(n+7)%g] += frequencies[n % g];
     }
+
+    let sum : i64 = frequencies.iter().sum();
+    println!("Day 6 part 1: {sum}");
+
+    for n in 80..256 {
+        frequencies[(n+7)%g] += frequencies[n % g];
+    }
+
+    let sum : i64 = frequencies.iter().sum();
+    println!("Day 6 part 2: {sum}");
 }
