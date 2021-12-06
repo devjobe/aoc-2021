@@ -1,4 +1,4 @@
-mod day05;
+mod day06;
 fn main() {
-    day05::run();
+    day06::run();
 }
