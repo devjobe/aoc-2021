@@ -30,8 +30,6 @@ pub fn run() {
             }
         }
         if !corrupt {
-            let s: String = state.iter().rev().collect();
-            println!("{s}");
             let score = state
                 .iter()
                 .rev()
