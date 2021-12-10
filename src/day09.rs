@@ -1,4 +1,4 @@
-use std::{collections::HashSet, ops::RangeInclusive};
+use std::collections::HashSet;
 
 fn get_basin_size(depths: &Vec<Vec<i32>>, x: usize, y: usize) -> usize {
     let mut frontier = Vec::new();
