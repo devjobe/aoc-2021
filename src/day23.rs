@@ -278,11 +278,11 @@ pub fn run() {
     let mut burrow = Burrow::from_input(include_str!("../inputs/day23.txt"));
     let mut memo = HashMap::new();
     let answer = burrow.solve(&mut memo, 2);
-    println!("Day 23.1: {answer}");
+    println!("Day 23 part 1: {answer}");
 
     memo = HashMap::with_capacity(64 * 1024);
 
     burrow.part2();
     let answer = burrow.solve(&mut memo, 4);
-    println!("Day 23.2: {answer}");
+    println!("Day 23 part 2: {answer}");
 }

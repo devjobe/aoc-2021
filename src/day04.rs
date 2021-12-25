@@ -77,13 +77,13 @@ impl Board {
 pub fn run() {
     let input = include_str!("../inputs/day04.txt");
 
-    let mut paragraphs = input.split("\r\n\r\n");
+    let mut paragraphs = input.split("\n\n");
 
     let nums: Vec<_> = paragraphs
         .next()
         .expect("Expected first line.")
         .split(',')
-        .map(|x| i32::from_str_radix(x, 10).expect("Expected number."))
+        .map(|x| i32::from_str_radix(x, 10).expect(format!("Expected number {x}").as_str()))
         .collect();
 
     let mut boards: Vec<Board> = paragraphs.map(Board::from).collect();
@@ -95,7 +95,7 @@ pub fn run() {
             if let Outcome::Bingo = board.mark(number) {
                 let answer = board.sum_nonmarked_values() * number;
                 if last_score == None {
-                    println!("Day04 part 1: {answer}");
+                    println!("Day 4 part 1: {answer}");
                 }
                 last_score = Some(answer);
             }
@@ -103,6 +103,6 @@ pub fn run() {
     }
 
     if let Some(answer) = last_score {
-        println!("Day04 part 2: {answer}");
+        println!("Day 4 part 2: {answer}");
     }
 }

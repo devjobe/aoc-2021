@@ -53,8 +53,8 @@ pub fn run() {
     }
     let mut visited = HashSet::new();
     let paths = find_paths(&nodes, &mut visited, "start", false);
-    println!("Day 10 part 1: {paths}");
+    println!("Day 12 part 1: {paths}");
 
     let paths2 = find_paths(&nodes, &mut visited, "start", true);
-    println!("Day 10 part 2: {paths2}");
+    println!("Day 12 part 2: {paths2}");
 }

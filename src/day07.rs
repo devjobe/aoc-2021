@@ -11,7 +11,7 @@ pub fn run() {
     {
         let median = crabs.get(crabs.len() / 2).copied().unwrap_or_default();
         let answer: i64 = crabs.iter().map(|&x| (x - median).abs()).sum();
-        println!("Day 6 part 1: {answer}");
+        println!("Day 7 part 1: {answer}");
     }
 
     {
@@ -20,10 +20,10 @@ pub fn run() {
         }
         let min = crabs.first().copied().unwrap_or_default();
         let max = crabs.last().copied().unwrap_or_default();
-        let answer : i64 = (min..=max)
+        let answer: i64 = (min..=max)
             .map(|k| crabs.iter().map(|&x| fuel_cost((x - k).abs())).sum())
             .min()
             .unwrap();
-        println!("Day 6 part 2: {answer}");
+        println!("Day 7 part 2: {answer}");
     }
 }

@@ -183,7 +183,7 @@ pub fn run() {
     let numbers: Vec<Vec<Shell>> = input.lines().map(parse_shell_number).collect();
     let sum = sum_shell_numbers(&numbers);
     let (answer, _remaining) = magnitude(sum.as_slice(), 0);
-    println!("{answer}");
+    println!("Day 18 part 1: {answer}");
 
     let mut answer2 = 0;
     let mut tail = numbers.iter();
@@ -196,5 +196,5 @@ pub fn run() {
             answer2 = answer2.max(m);
         }
     }
-    println!("{answer2}");
+    println!("Day 18 part 2: {answer2}");
 }

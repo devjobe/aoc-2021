@@ -98,11 +98,11 @@ pub fn run() {
                 _ => 0,
             })
             .sum();
-        println!("Day 1 part 1 {answer}");
+        println!("Day 8 part 1 {answer}");
     }
 
     {
         let answer: i64 = input.lines().map(decode_line).sum();
-        println!("Day 1 part 2 {answer}");
+        println!("Day 8 part 2 {answer}");
     }
 }

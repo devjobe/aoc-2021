@@ -111,7 +111,6 @@ pub fn run() {
         .enumerate()
         .collect::<Vec<(usize, HashSet<(i32, i32, i32)>)>>();
 
-    println!("Parsed {} scanners", scanners.len());
     let rotations = (0..=3).flat_map(|up| (0..=5).map(move |facing| (facing, up)));
 
     let mut locations = Vec::with_capacity(scanners.len());
@@ -135,10 +134,6 @@ pub fn run() {
                         let id = rotated.remove(index).0;
                         scanners.push((id, world));
                         locations.push(origin);
-                        println!(
-                            "{} matched with {} at {origin:?}",
-                            id, scanners[scanner_index].0
-                        );
                     }
                 }
                 scanner_index += 1;
